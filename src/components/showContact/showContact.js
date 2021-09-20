@@ -29,7 +29,7 @@ export default function ShowContact() {
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   const deleteContact = (id) => {
     axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{
-      window.location.reload(true);
+      window.location.reload(false);
     })
   }  
       
