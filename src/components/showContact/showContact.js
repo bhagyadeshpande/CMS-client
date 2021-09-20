@@ -26,15 +26,15 @@ export default function ShowContact() {
   const [contactList, setContactList] = useState([]);  
   const [display, setDisplay] = useState(false);  
   const [curId, setCurId] = useState(null);  
-  
+  const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   const deleteContact = (id) => {
-    axios.delete(`http://localhost:5000/contacts/${id}`).then(()=>{
-      window.location.reload(false);
+    axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{
+      //window.location.reload(false);
     })
   }  
       
   useEffect(()=>{
-    axios.get('http://localhost:5000/contacts').then((allContacts)=>{
+    axios.get(`$BASE_URL/contacts`).then((allContacts)=>{
       setContactList(allContacts.data);            
     })
   },[])

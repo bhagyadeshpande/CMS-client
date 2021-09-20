@@ -12,13 +12,11 @@ export default function EditContact(props) {
   contactList = props.thisContact;     
   const [open, setOpen] = React.useState(true);  
   console.log("contactlist", contactList)
-  const [contact, setContact] = useState([]);
-   
-  console.log("contact", contact);
-
-    
+  const [contact, setContact] = useState([]); 
+  
+  const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   const handleUpdate = (contact) =>{      
-    axios.put(`http://localhost:5000/contacts/${props.thisId}`, contact).then((response) => {     
+    axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {     
     setContact(response.data);       
     setOpen(false);
     window.location.reload(false);   

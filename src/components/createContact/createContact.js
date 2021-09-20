@@ -22,9 +22,10 @@ export default function Create() {
     contactPhone:0,
     contactEmail:''
   })
+  const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   const createContact = () =>{
-    axios.post('http://localhost:5000/contacts', contact).then(()=>{
-      window.location.reload(false);
+    axios.post(`${BASE_URL}/contacts`, contact).then(()=>{
+      //window.location.reload(false);
     })
   }
   const formStyle = {
