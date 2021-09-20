@@ -10,8 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 let contactList = [];
 export default function EditContact(props) {  
   contactList = props.thisContact;     
-  const [open, setOpen] = React.useState(true);  
-  console.log("contactlist", contactList)
+  const [open, setOpen] = React.useState(true);    
   const [contact, setContact] = useState([]); 
   
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";

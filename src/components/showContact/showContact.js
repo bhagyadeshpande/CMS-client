@@ -27,18 +27,19 @@ export default function ShowContact() {
   const [display, setDisplay] = useState(false);  
   const [curId, setCurId] = useState(null);  
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
+
+  useEffect(()=>{
+    axios.get(`${BASE_URL}/contacts`).then((allContacts)=>{
+      setContactList(allContacts.data);            
+    })
+  },[]);
+
   const deleteContact = (id) => {
     axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{
       window.location.reload(false);
     })
-  }  
-      
-  useEffect(()=>{
-    axios.get(`$BASE_URL/contacts`).then((allContacts)=>{
-      setContactList(allContacts.data);            
-    })
-  },[])
-
+  };      
+ 
   const updateContact = (currentIndex, currentId) => {   
     currentContact.push({ contactName : contactList[currentIndex].contactName,
       contactAddress :contactList[currentIndex].contactAddress,
@@ -96,5 +97,7 @@ export default function ShowContact() {
     </>
   );
 }
+
+
 
 

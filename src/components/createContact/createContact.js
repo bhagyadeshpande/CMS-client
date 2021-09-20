@@ -28,9 +28,11 @@ export default function Create() {
       window.location.reload(false);
     })
   }
+
   const formStyle = {
     backgroundColor: "lightyellow"      
   }
+  
   return (    
     <Container style={formStyle}>
       <p style={{fontSize:"34px"}}>Add a new Contact</p>    
