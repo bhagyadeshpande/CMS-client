@@ -30,13 +30,14 @@ export default function ShowContact() {
 
   useEffect(()=>{
     axios.get(`${BASE_URL}/contacts`).then((allContacts)=>{
-      setContactList(allContacts.data);            
+      setContactList(allContacts.data);       
     })
   },[]);
 
   const deleteContact = (id) => {
-    axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{    
-    window.location.reload(false);
+    axios.delete(`${BASE_URL}/contacts/${id}`).then((result)=>{   
+      const newList = result.data;       
+      setContactList([...newList]);       
     })
   };      
  
