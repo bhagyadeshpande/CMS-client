@@ -34,9 +34,10 @@ export default function ShowContact() {
     })
   },[]);
 
-  const deleteContact = async (id) => {
-    await axios.delete(`${BASE_URL}/contacts/${id}`);
-    window.location.reload(false);
+  const deleteContact = (id) => {
+    axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{
+      window.location.reload(false);
+    })    
   };      
  
   const updateContact = (currentIndex, currentId) => {   
