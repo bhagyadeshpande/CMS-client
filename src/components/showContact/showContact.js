@@ -35,12 +35,11 @@ export default function ShowContact() {
   },[]);
 
   const deleteContact = (id) => {
-    axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{
-      //window.location.reload();
-      window.history.go();
-      //setContactList();
-    })      
-  };      
+    axios.delete(`https://contactmanagementserver.herokuapp.com/contacts/${id}`)
+    .then(()=>{
+      window.location.reload();}           
+    )      
+  }    
  
   const updateContact = (currentIndex, currentId) => {   
     currentContact.push({ contactName : contactList[currentIndex].contactName,
