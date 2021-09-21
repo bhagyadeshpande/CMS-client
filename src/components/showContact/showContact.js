@@ -36,9 +36,9 @@ export default function ShowContact() {
 
   const deleteContact = (id) => {
     axios.delete(`${BASE_URL}/contacts/${id}`).then((allContacts)=>{
+      window.location.reload();
       setContactList(allContacts.data);
-    })  
-    window.location.reload(false);  
+    })      
   };      
  
   const updateContact = (currentIndex, currentId) => {   
