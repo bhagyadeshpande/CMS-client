@@ -84,7 +84,7 @@ export default function ShowContact() {
               </Tooltip>
               <Tooltip title="delete contact">
               <IconButton aria-label="delete" className={classes.margin}
-              type = "submit" 
+              type = "button" 
               onClick = {()=> deleteContact(contact._id)}>              
               <DeleteIcon fontSize="small" />              
               </IconButton>              
