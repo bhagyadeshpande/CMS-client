@@ -34,10 +34,9 @@ export default function ShowContact() {
     })
   },[]);
 
-  const deleteContact = (id) => {
-    axios.delete(`https://contactmanagementserver.herokuapp.com/contacts/${id}`).then(
-      window.location.reload(false)
-    )   
+  const deleteContact = async (id) => {
+    await axios.delete(`${BASE_URL}/contacts/${id}`);
+    window.location.reload(false);
   };      
  
   const updateContact = (currentIndex, currentId) => {   
