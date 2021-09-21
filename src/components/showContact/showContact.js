@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 import Tooltip from '@material-ui/core/Tooltip';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,8 +9,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
 import EditContact from '../editContact/editContact.js';
@@ -34,19 +35,12 @@ export default function ShowContact() {
     })
   },[]);
 
-  /*const deleteContact = (id) => {
-    axios.delete(`https://contactmanagementserver.herokuapp.com/contacts/${id}`)
+  const deleteContact = (id) => {
+    axios.delete(`${BASE_URL}/contacts/${id}`)
     .then(()=>{
-      window.location.reload();}           
-    )      
-  }  */
-  
-  async function deleteContact(id){
-     await axios.delete(`https://contactmanagementserver.herokuapp.com/contacts/${id}`)
-     .then(()=>{
-       window.location.reload();
-      })     
-  }
+      window.location.reload();
+    } )      
+  }  
  
   const updateContact = (currentIndex, currentId) => {   
     currentContact.push({ contactName : contactList[currentIndex].contactName,
@@ -91,10 +85,11 @@ export default function ShowContact() {
               </IconButton>              
               </Tooltip>
               <Tooltip title="delete contact">
-              <IconButton aria-label="delete" className={classes.margin}               
+              <Button aria-label="delete" className={classes.margin} 
+              type = "submit"              
               onClick = {()=> deleteContact(contact._id)}>              
               <DeleteIcon fontSize="small" />              
-              </IconButton>              
+              </Button>              
               </Tooltip>
               </TableCell>
             </TableRow>
