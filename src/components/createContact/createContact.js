@@ -25,7 +25,7 @@ export default function Create() {
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   const createContact = () =>{
     axios.post(`${BASE_URL}/contacts`, contact).then(()=>{
-      window.location.reload(false);
+      window.location.reload(true);
     })
   }
 
