@@ -34,12 +34,19 @@ export default function ShowContact() {
     })
   },[]);
 
-  const deleteContact = (id) => {
+  /*const deleteContact = (id) => {
     axios.delete(`https://contactmanagementserver.herokuapp.com/contacts/${id}`)
     .then(()=>{
       window.location.reload();}           
     )      
-  }    
+  }  */
+  
+  async function deleteContact(id){
+     await axios.delete(`https://contactmanagementserver.herokuapp.com/contacts/${id}`)
+     .then(()=>{
+       window.location.reload();
+      })     
+  }
  
   const updateContact = (currentIndex, currentId) => {   
     currentContact.push({ contactName : contactList[currentIndex].contactName,
@@ -84,8 +91,7 @@ export default function ShowContact() {
               </IconButton>              
               </Tooltip>
               <Tooltip title="delete contact">
-              <IconButton aria-label="delete" className={classes.margin}
-              type = "button" 
+              <IconButton aria-label="delete" className={classes.margin}               
               onClick = {()=> deleteContact(contact._id)}>              
               <DeleteIcon fontSize="small" />              
               </IconButton>              
