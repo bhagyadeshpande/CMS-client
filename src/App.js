@@ -17,7 +17,7 @@ function App() {
      <Container maxWidth = "lg">
       <AppBar className={classes.appBar1} position="static" color="inherit">
         <Typography className = {classes.heading} variant="h2" align="center">
-        MY CONTACTS        
+        ADDRESS BOOK        
         </Typography>     
         <Typography className = {classes.heading} variant="h2" align="center">   
         <Button variant="contained" color="secondary"
