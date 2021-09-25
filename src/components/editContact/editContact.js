@@ -14,6 +14,7 @@ export default function EditContact(props) {
   const [contact, setContact] = useState([]); 
   
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
+  //const BASE_URL = "http://localhost:5000";
   const handleUpdate = (contact) =>{      
     axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {     
     setContact(response.data);       
@@ -21,7 +22,7 @@ export default function EditContact(props) {
     window.location.reload(false);   
   });   
   }
-
+  
   const handleClose = () => {    
     setOpen(false);
     window.location.reload(false);

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, {useState} from 'react';
 import './App.css';
-import Contact from './components/showContact/showContact.js'
+import ShowContact from './components/showContact/showContact.js'
 import Create from './components/createContact/createContact.js'
 import {Container, AppBar, Typography} from '@material-ui/core';
 import useStyles from './styles.js';
@@ -27,7 +27,7 @@ function App() {
           </Typography>              
       </AppBar>           
       <AppBar className={classes.appBar} position="static" color="inherit">
-      <Contact />            
+      <ShowContact/>
       </AppBar>          
      </Container>
     </div>

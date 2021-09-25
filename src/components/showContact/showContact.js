@@ -21,27 +21,26 @@ const useStyles = makeStyles({
 }
 });
 let currentContact = [];
-export default function ShowContact() {
+export default function ShowContact(props) {
   const classes = useStyles();
   const [contactList, setContactList] = useState([]);  
   const [display, setDisplay] = useState(false);  
   const [curId, setCurId] = useState(null);  
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
-
+  //const BASE_URL = "http://localhost:5000";
+  
   useEffect(()=>{
     axios.get(`${BASE_URL}/contacts`).then((allContacts)=>{
       setContactList(allContacts.data);       
     })
   },[])
 
-  const deleteContact = (id) => {
-    axios.delete(`${BASE_URL}/contacts/${id}`)
-    .then((newList)=>{
-      setContactList(newList.data);       
-      //window.location.reload();      
+  const deleteContact = (id) => {    
+    axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{        
+      window.location.reload(false);
     } )     
   }  
- 
+
   const updateContact = (currentIndex, currentId) => {   
     currentContact.push({ contactName : contactList[currentIndex].contactName,
       contactAddress :contactList[currentIndex].contactAddress,
@@ -52,7 +51,7 @@ export default function ShowContact() {
       }  
   
   return (
-    <>    
+    <>        
     {display ? <EditContact thisContact={currentContact} thisId={curId} /> : ''}    
     <h2>Contacts</h2>         
     <TableContainer component={Paper}>
