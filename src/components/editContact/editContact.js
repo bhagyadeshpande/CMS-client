@@ -17,7 +17,7 @@ export default function EditContact(props) {
   //const BASE_URL = "http://localhost:5000"; 
          
   const handleUpdate = (event) =>{  
-    event.preventDefault();
+    //event.preventDefault();
     try {    
     const result = axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact);
     setContact(result.data);        
