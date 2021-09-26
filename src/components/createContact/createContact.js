@@ -29,6 +29,7 @@ export default function Create() {
   //const BASE_URL = "http://localhost:5000";
   
   const createContact = () =>{     
+    console.log("creation", contact);
       try {    
       const result =  axios.post(`${BASE_URL}/contacts`, contact);       
       setContact(result.data);  
