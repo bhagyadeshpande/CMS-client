@@ -31,8 +31,9 @@ export default function Create() {
   const createContact = () =>{     
     console.log("creation", contact);
       try {    
-      const result =  axios.post(`${BASE_URL}/contacts`, contact);       
-      setContact(result.data);  
+      axios.post(`${BASE_URL}/contacts`, contact).then((response)=>{
+        setContact(response.data);
+      })       
       }
       catch(err){
         console.log(err);
