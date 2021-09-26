@@ -10,19 +10,18 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 let contactList = [];
 export default function EditContact(props) {  
   contactList = props.thisContact;     
-  const [open, setOpen] = React.useState(true);    
+  const [open, setOpen] = useState(true);    
   const [contact, setContact] = useState([]); 
   
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
-  const handleUpdate = () =>{      
-    axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {    
-    setContact(response.data);
-    }).then(() =>{   
-    setOpen(false);
-    window.location.reload();   
-  });   
-  }
+  const handleUpdate = async () =>{      
+    await axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {    
+    setContact(response.data);    
+    handleClose();
+    //window.location.reload();     
+  })
+} 
   
   const handleClose = () => {    
     setOpen(false);
