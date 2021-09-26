@@ -21,6 +21,7 @@ export default function EditContact(props) {
     const result = await axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact);
     setContact(result.data);        
     setOpen(false);
+    window.location.reload();
     }
     catch (err) {      
       console.error(err);
