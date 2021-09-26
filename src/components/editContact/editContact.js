@@ -17,8 +17,7 @@ export default function EditContact(props) {
   //const BASE_URL = "http://localhost:5000";
   const handleUpdate = () =>{      
     axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {    
-    setContact(response.data);   
-    handleClose();      
+    return response.data;         
     })
 } 
   
@@ -75,9 +74,9 @@ export default function EditContact(props) {
             onChange = {(event) => {setContact({...contact, contactEmail : event.target.value})}}
           />
            <DialogActions>
-        <Button type="submit" onClick={handleUpdate} color="primary">
+           <Button onClick={handleUpdate} color="primary">
             Save
-          </Button>
+          </Button>  
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>         
