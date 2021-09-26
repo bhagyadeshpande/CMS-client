@@ -14,13 +14,16 @@ export default function EditContact(props) {
   const [contact, setContact] = useState([]); 
 
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
-  //const BASE_URL = "http://localhost:5000";
-  const handleUpdate = () =>{      
-    axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {  
-    setContact(response.data);         
-    setOpen(false);
-    })
-    window.location.reload(false);
+  //const BASE_URL = "http://localhost:5000"; 
+         
+  const handleUpdate = async () =>{  
+    try {    
+    const result = await axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact);
+    console.log(result.data);        
+    }
+    catch (err) {      
+      console.error(err);
+  }   
 } 
   
   const handleClose = () => {    
