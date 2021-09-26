@@ -23,7 +23,8 @@ export default function EditContact(props) {
   const handleUpdate = (contact) =>{     
     console.log("updating contact", contact);
     const result = axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact);
-    setContact(result.data);        
+    setContact(result.data);  
+    console.log("contact after updating", contact);      
     handleClose();  
 } 
   
