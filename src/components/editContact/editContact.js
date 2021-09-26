@@ -20,8 +20,7 @@ export default function EditContact(props) {
     try {    
     const result = await axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact);
     setContact(result.data);        
-    setOpen(false);
-    window.location.reload();
+    handleClose();
     }
     catch (err) {      
       console.error(err);
