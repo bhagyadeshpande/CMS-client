@@ -11,7 +11,11 @@ let contactList = [];
 export default function EditContact(props) {  
   contactList = props.thisContact;     
   const [open, setOpen] = useState(true);    
-  const [contact, setContact] = useState([]); 
+  const [contact, setContact] = useState([{    
+    contactName : '',
+    contactAddress :'',
+    contactPhone:0,
+    contactEmail:''}]); 
 
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000"; 
