@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Create() {
   
   const classes = useStyles();
-  // eslint-disable-next-line no-unused-vars
-  const [status, setStatus ] = useState('');  
+  // eslint-disable-next-line no-unused-vars  
+  const [open, setOpen] = useState(true);   
   const [contact, setContact] = useState({    
     contactName : '',
     contactAddress :'',
@@ -29,11 +29,21 @@ export default function Create() {
   //const BASE_URL = "http://localhost:5000";
   
   const createContact = () =>{        
-      axios.post(`${BASE_URL}/contacts`, contact).then((response)=>{
-        setContact(response.data);
-        setStatus("addition success!")
-      })            
+    try {    
+      const result = axios.post(`${BASE_URL}/contacts`, contact);
+      setContact(result.data);        
+      handleClose();
       }
+      catch (err) {      
+        console.error(err);
+    }   
+  } 
+    
+    const handleClose = () => {    
+      setOpen(false);
+      window.location.reload(false);
+    };   
+  
 
   const formStyle = {
     backgroundColor: "lightyellow"      
