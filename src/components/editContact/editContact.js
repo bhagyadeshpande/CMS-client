@@ -17,7 +17,7 @@ export default function EditContact(props) {
     axios.get(`${BASE_URL}/contacts`).then((allContacts)=>{
       setContact(allContacts.data);       
     })
-  })
+  }, [contact]);
 
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
