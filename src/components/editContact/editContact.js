@@ -20,6 +20,7 @@ export default function EditContact(props) {
     setContact(response.data);         
     setOpen(false);
     })
+    window.location.reload(false);
 } 
   
   const handleClose = () => {    
