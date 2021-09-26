@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -13,12 +13,18 @@ export default function EditContact(props) {
   const [open, setOpen] = useState(true);    
   const [contact, setContact] = useState([]); 
   
+  useEffect(()=>{
+    axios.get(`${BASE_URL}/contacts`).then((allContacts)=>{
+      setContact(allContacts.data);       
+    })
+  })
+
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
   const handleUpdate = () =>{      
     axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {    
     setContact(response.data);             
-  }).then({handleClose});  
+    })
 } 
   
   const handleClose = () => {    
