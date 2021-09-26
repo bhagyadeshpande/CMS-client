@@ -15,7 +15,7 @@ export default function EditContact(props) {
   
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
-  const handleUpdate = (contact) =>{      
+  const handleUpdate = () =>{      
     axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {     
     setOpen(false);
     setContact(response.data);   
@@ -77,7 +77,7 @@ export default function EditContact(props) {
             onChange = {(event) => {setContact({...contact, contactEmail : event.target.value})}}
           />
            <DialogActions>
-        <Button onClick={()=>handleUpdate(contact)} color="primary">
+        <Button onClick={handleUpdate} color="primary">
             Save
           </Button>
           <Button onClick={handleClose} color="primary">
