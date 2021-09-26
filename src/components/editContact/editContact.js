@@ -18,9 +18,10 @@ export default function EditContact(props) {
   const handleUpdate = async () =>{      
     await axios.put(`${BASE_URL}/contacts/${props.thisId}`, contact).then((response) => {    
     setContact(response.data);    
-    handleClose();
+    
     //window.location.reload();     
   })
+  handleClose();
 } 
   
   const handleClose = () => {    
