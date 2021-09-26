@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-//import ShowContact from '../showContact/showContact';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Create() {
+  
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
+  const [status, setStatus ] = useState('');  
   const [contact, setContact] = useState({    
     contactName : '',
     contactAddress :'',
@@ -26,11 +28,10 @@ export default function Create() {
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
   
-  const createContact = () =>{    
+  const createContact = () =>{         
       axios.post(`${BASE_URL}/contacts`, contact).then((response)=>{         
-      setContact(response.data);         
-      //window.location.reload(false);
-      
+      setContact(response.data);  
+      setStatus("contact added successfully");          
     })
   }
 
@@ -38,8 +39,8 @@ export default function Create() {
     backgroundColor: "lightyellow"      
   }
   
-  return (    
-    <>
+  return (        
+    <>    
     <Container style={formStyle}>
     <p style={{fontSize:"34px"}}>Add a new Contact</p>    
     <form className={classes.root} noValidate autoComplete="off">   
@@ -64,8 +65,9 @@ export default function Create() {
      </form>
      <Button variant="contained" color="primary" onClick = {createContact}>
         ADD 
-      </Button>
-    </Container>        
+      </Button> 
+    </Container>  
+    
     </>
   );
 }

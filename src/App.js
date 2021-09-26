@@ -23,7 +23,7 @@ function App() {
         <Button variant="contained" color="secondary"
         onClick={()=>setShow(true)}>          
           Add new contact</Button>   
-          {show?<Create/>:''}         
+          {show?<Create />:''}         
           </Typography>              
       </AppBar>           
       <AppBar className={classes.appBar} position="static" color="inherit">

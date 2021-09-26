@@ -26,6 +26,8 @@ export default function ShowContact(props) {
   const [contactList, setContactList] = useState([]);  
   const [display, setDisplay] = useState(false);  
   const [curId, setCurId] = useState(null);  
+  // eslint-disable-next-line no-unused-vars
+  const [status, setStatus] = useState('');
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
   
@@ -33,11 +35,12 @@ export default function ShowContact(props) {
     axios.get(`${BASE_URL}/contacts`).then((allContacts)=>{
       setContactList(allContacts.data);       
     })
-  },[])
+  })
 
   const deleteContact = (id) => {    
     axios.delete(`${BASE_URL}/contacts/${id}`).then(()=>{        
-      window.location.reload(false);
+//      window.location.reload(false);
+    setStatus('deletion successful');
     } )     
   }  
 
