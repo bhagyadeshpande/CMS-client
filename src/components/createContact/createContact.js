@@ -28,17 +28,12 @@ export default function Create() {
   const BASE_URL = "https://contactmanagementserver.herokuapp.com";
   //const BASE_URL = "http://localhost:5000";
   
-  const createContact = () =>{     
-    console.log("creation", contact);
-      try {    
+  const createContact = () =>{        
       axios.post(`${BASE_URL}/contacts`, contact).then((response)=>{
         setContact(response.data);
-      })       
+        setStatus("addition success!")
+      })            
       }
-      catch(err){
-        console.log(err);
-      }    
-  }
 
   const formStyle = {
     backgroundColor: "lightyellow"      
